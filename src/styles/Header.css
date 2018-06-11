@@ -1,0 +1,31 @@
+header {
+  min-height: 80px;
+  margin: 0px 15px 0px 15px;
+  border-bottom: solid 1px #bbb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.no-user-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.user-header {
+  display: flex;
+  min-width: 80%;
+  justify-content: space-between;
+}
+
+h1 {
+  font-size: 25px;
+  margin: 10px;
+}
+
+select {
+  display: block;
+}
