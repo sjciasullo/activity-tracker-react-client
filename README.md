@@ -7,4 +7,6 @@ Front end React client which consumes Spring API for Activity Tracker.
 
 ### Dev Running Instructions
 1. Clone [activity-tracker-api](https://github.com/sjciasullo/activity-tracker-api) repository and follow instructions to start server
-2. run "npm start" to start react app
+2. If first time cloning this repo, enter "npm install" on command line.
+3. Enter "cp -ur google-maps-react/ node_modules/" to overwrite google-maps package with edited version
+4. Enter "npm start" to start react app
