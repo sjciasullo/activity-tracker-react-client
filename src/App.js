@@ -32,7 +32,7 @@ class App extends Component {
 
   // ------ Calls to API ------
   getUsers(){
-    fetch('http://localhost:8080/users', {
+    fetch('http://localhost:8080/api/users', {
       method: 'GET'
     }).then(res => res.json())
     .then(json => {
@@ -44,7 +44,7 @@ class App extends Component {
   }
 
   getActivities(){
-    fetch('http://localhost:8080/activities', {
+    fetch('http://localhost:8080/api/activities', {
       method: 'GET'
     }).then(res => res.json())
     .then(json => {
