@@ -5,12 +5,12 @@ import randomColor from 'randomcolor';
 function ActivitiesLinechart(props){
   const activities = props.activities;
 
-  let monthTracker = {};
-  const monthlyData = [];
+  let dateTracker = {};
+  const dateData = [];
   let uniqueActivities = {};
   //format activites for linechart data
   activities.forEach(activity => {
-    const month = activity.month;
+    const date = activity.date;
     const name = activity.activityName;
 
     //add activity name to uniqueactivities if it doesn't exist there
@@ -18,17 +18,17 @@ function ActivitiesLinechart(props){
       uniqueActivities[name] = 0;
     }
 
-    // look for month in month tracker and sum activity if it exists
-    if(month in monthTracker){
-      if(name in monthlyData[monthTracker[month]]) {
-        monthlyData[monthTracker[month]][name] += activity.totalMinutes;
+    // look for date in date tracker and sum activity if it exists
+    if(date in dateTracker){
+      if(name in dateData[dateTracker[date]]) {
+        dateData[dateTracker[date]][name] += activity.totalMinutes;
       } else {
-        monthlyData[monthTracker[month]][name] = activity.totalMinutes;
+        dateData[dateTracker[date]][name] = activity.totalMinutes;
       }
     } else {
-      const addedIndex = monthlyData.push({month: month}) - 1;
-      monthlyData[addedIndex][name] = activity.totalMinutes;
-      monthTracker[month] = addedIndex;
+      const addedIndex = dateData.push({date: date}) - 1;
+      dateData[addedIndex][name] = activity.totalMinutes;
+      dateTracker[date] = addedIndex;
     }
   })
 
@@ -44,10 +44,10 @@ function ActivitiesLinechart(props){
 
   //this is currently an example from recharts.org
   return (
-    <LineChart width={730} height={400} data={monthlyData}
+    <LineChart width={730} height={400} data={dateData}
                margin={{ top: 20, right: 10, left: 10, bottom: 20 }}>
       <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey="month" />
+      <XAxis dataKey="date" />
       <YAxis />
       <Tooltip />
       <Legend />
