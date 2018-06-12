@@ -15,7 +15,7 @@ class ActivityForm extends Component{
       lat: null,
       lng: null,
       totalMinutes: "",
-      date: "",
+      date: this.currentDate(),
       notes: ""
     }
 
@@ -51,7 +51,7 @@ class ActivityForm extends Component{
         this.setState({
           totalMinutes: "",
           activityName: "",
-          date: "",
+          date: this.currentDate(),
           notes: ""
         })
       } else {
@@ -110,8 +110,6 @@ class ActivityForm extends Component{
 
   // after posting, add to top state arrays
   postActivity(){
-    const today = new Date();
-    const todayDate = `${today.getFullYear()}-${(today.getMonth()+1)}-${today.getDate()}`;
     fetch("http://localhost:8080/activities", {
       method: 'POST',
       headers: {
@@ -120,7 +118,7 @@ class ActivityForm extends Component{
       body: JSON.stringify({
         activityName: this.state.activityName || "default",
         userId: this.props.userId,
-        date: this.state.date || todayDate,
+        date: this.state.date,
         totalMinutes: this.state.totalMinutes || 0,
         notes: this.state.notes,
         location: this.state.location || "stay classy, it's planet earth",
@@ -194,6 +192,11 @@ class ActivityForm extends Component{
   }
 
   // ------ END FORM HANLDERS ------
+  // Date helper
+  currentDate(){
+    const today = new Date();
+    return `${today.getFullYear()}-${(today.getMonth()+1)}-${today.getDate()}`;
+  }
 
   render(){
     return(
