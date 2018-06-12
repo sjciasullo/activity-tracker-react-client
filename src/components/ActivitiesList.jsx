@@ -9,7 +9,7 @@ function ActivitiesList(props){
   const activitiesListTags = activities.map((activity) => {
     return (
       <li key={activity.id} onClick={() => switchEditActivity(activity.id)}>
-        {activity.activityName} for {activity.totalMinutes} minutes in {activity.month}
+        {activity.activityName} for {activity.totalMinutes} minutes on {activity.date}
       </li>
     )
   })
