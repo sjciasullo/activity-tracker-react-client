@@ -62,7 +62,6 @@ class ActivityForm extends Component{
   // ------ END LIFE CYCLE ------
 
   // ------ FETCHING ------
-  // TODO: ADD LOCATION, LAT, AND LNG TO THESE REQUESTS
 
   getActivity(id){
     // if activity is 0 then we are trying to create a new activity
