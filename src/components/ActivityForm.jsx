@@ -118,7 +118,7 @@ class ActivityForm extends Component{
       body: JSON.stringify({
         activityName: this.state.activityName || "default",
         userId: this.props.userId,
-        date: this.state.date,
+        date: this.state.date || this.currentDate(),
         totalMinutes: this.state.totalMinutes || 0,
         notes: this.state.notes,
         location: this.state.location || "stay classy, it's planet earth",
