@@ -32,6 +32,9 @@ function ActivitiesLinechart(props){
     }
   })
 
+  // at end of formatting dateData, sort it by date
+  dateData.sort((a, b) => a.date - b.date);
+
   //create lines for chart
   const lines = [];
   for(let key in uniqueActivities){
