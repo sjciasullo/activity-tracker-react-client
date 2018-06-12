@@ -195,7 +195,11 @@ class ActivityForm extends Component{
   // Date helper
   currentDate(){
     const today = new Date();
-    return `${today.getFullYear()}-${(today.getMonth()+1)}-${today.getDate()}`;
+    let month = `${today.getMonth() + 1}`;
+    if(month.length === 1){
+      month = "0" + month;
+    }
+    return `${today.getFullYear()}-${month}-${today.getDate()}`;
   }
 
   render(){
