@@ -15,7 +15,7 @@ class ActivityForm extends Component{
       lat: null,
       lng: null,
       totalMinutes: "",
-      month: "",
+      date: "",
       notes: ""
     }
 
@@ -51,7 +51,7 @@ class ActivityForm extends Component{
         this.setState({
           totalMinutes: "",
           activityName: "",
-          month: "",
+          date: "",
           notes: ""
         })
       } else {
@@ -111,6 +111,8 @@ class ActivityForm extends Component{
 
   // after posting, add to top state arrays
   postActivity(){
+    const today = new Date();
+    const todayDate = `${today.getFullYear()}-${(today.getMonth()+1)}-${today.getDate()}`;
     fetch("http://localhost:8080/activities", {
       method: 'POST',
       headers: {
@@ -119,7 +121,7 @@ class ActivityForm extends Component{
       body: JSON.stringify({
         activityName: this.state.activityName || "default",
         userId: this.props.userId,
-        month: this.state.month || "month",
+        date: this.state.date || todayDate,
         totalMinutes: this.state.totalMinutes || 0,
         notes: this.state.notes,
         location: this.state.location || "stay classy, it's planet earth",
@@ -216,8 +218,8 @@ class ActivityForm extends Component{
 
               {/* only show date input for a new activity */}
               {this.props.activityId === 0 && (
-                <input name="month" onChange={this.handleInputChange} type="text" 
-                  placeholder="Month" value={this.state.month}
+                <input name="date" onChange={this.handleInputChange} type="text" 
+                  placeholder="Date" value={this.state.date}
                 />
               )}
               {this.props.activityId === 0 && <br />}
