@@ -224,7 +224,7 @@ class ActivityForm extends Component{
 
               {/* only show date input for a new activity */}
               {this.props.activityId === 0 && (
-                <input name="date" onChange={this.handleInputChange} type="text" 
+                <input name="date" onChange={this.handleInputChange} type="date" 
                   placeholder="Date" value={this.state.date}
                 />
               )}
