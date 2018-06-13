@@ -33,7 +33,15 @@ function ActivitiesLinechart(props){
   })
 
   // at end of formatting dateData, sort it by date
-  dateData.sort((a, b) => a.date - b.date);
+  dateData.sort((a, b) => {
+    if(a.date < b.date) {
+      return -1;
+    } else if(a.date > b.date){
+      return 1;
+    } else {
+      return 0;
+    }
+  });
 
   //create lines for chart
   const lines = [];
