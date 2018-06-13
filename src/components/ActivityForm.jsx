@@ -66,7 +66,7 @@ class ActivityForm extends Component{
   getActivity(id){
     // if activity is 0 then we are trying to create a new activity
     if(id !== 0){
-      fetch(`http://localhost:8080/api/activities/${id}`, {
+      fetch(process.env.REACT_APP_HOST + `/api/activities/${id}`, {
         method: 'GET'
       }).then(res => res.json())
       .then(json => {
@@ -89,7 +89,7 @@ class ActivityForm extends Component{
 
   //after patching activity, update in top state
   patchActivity(id){
-    fetch(`http://localhost:8080/api/activities/${id}`, {
+    fetch(process.env.REACT_APP_HOST + `/api/activities/${id}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
@@ -110,7 +110,7 @@ class ActivityForm extends Component{
 
   // after posting, add to top state arrays
   postActivity(){
-    fetch("http://localhost:8080/api/activities", {
+    fetch(process.env.REACT_APP_HOST + '/api/activities', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -132,7 +132,7 @@ class ActivityForm extends Component{
   }
 
   deleteActivity(){
-    fetch(`http://localhost:8080/api/activities/${this.props.activityId}`, {
+    fetch(process.env.REACT_APP_HOST + `/api/activities/${this.props.activityId}`, {
       method: 'DELETE'
     }).then(res => res.json())
     .then(json => {

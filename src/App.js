@@ -32,7 +32,7 @@ class App extends Component {
 
   // ------ Calls to API ------
   getUsers(){
-    fetch('http://localhost:8080/api/users', {
+    fetch(process.env.REACT_APP_HOST + '/api/users', {
       method: 'GET'
     }).then(res => res.json())
     .then(json => {
@@ -44,7 +44,7 @@ class App extends Component {
   }
 
   getActivities(){
-    fetch('http://localhost:8080/api/activities', {
+    fetch(process.env.REACT_APP_HOST + '/api/activities', {
       method: 'GET'
     }).then(res => res.json())
     .then(json => {
